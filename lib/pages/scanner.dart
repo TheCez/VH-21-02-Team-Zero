@@ -37,8 +37,11 @@ class MyScaffoldBody extends StatelessWidget {
         }).then((result) async {
           // String pdfUrl = result['pdfUrl'];
           print('Ajay');
-          print(result['scans'][0]['enhancedUrl']);
-          scanImage(File(result['scans'][0]['enhancedUrl'].replaceAll("file://", '')));
+          print(File(result['scans'][0]['enhancedUrl']));
+          //scanImage(File(result['scans'][0]['enhancedUrl'].replaceAll("file://", '')));
+          //uploadImageToFirebase(result['scans'][0]['enhancedUrl'].replaceAll("file://", ''));
+          final ans = await uploadFile(File(result['scans'][0]['enhancedUrl'].replaceAll("file://", '')));
+          print(ans.toString()+" abhishek ");
           // Navigator.push(
           //     context,
           //     MaterialPageRoute(

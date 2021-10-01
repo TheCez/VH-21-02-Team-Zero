@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "536913161297",
+    "project_id": "buck-tracker",
+    "storage_bucket": "buck-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536913161297:android:c86c4f54e1bee6bda65c70",
+        "android_client_info": {
+          "package_name": "dev.zero.buck_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536913161297-44gr4e8e7k4ndj1qv55l986amakdg9kf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.zero.buck_tracker",
+            "certificate_hash": "020c4aedc7f0a7802ebd6c7366ccb5478c6848b6"
+          }
+        },
+        {
+          "client_id": "536913161297-9nj69cs8q28dt0na9s4klq5akvd6tjrp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.zero.buck_tracker",
+            "certificate_hash": "160585f6d8cbf8bd2f236d18ca5a89b82d4d7d9a"
+          }
+        },
+        {
+          "client_id": "536913161297-begdpmcej7fn0ot4fptur8agiqjcrpmu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQWME9to4vcGy9fhj_cXcd0tFulEAJ444"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "536913161297-begdpmcej7fn0ot4fptur8agiqjcrpmu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

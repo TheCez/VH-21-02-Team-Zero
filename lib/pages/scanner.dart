@@ -2,6 +2,7 @@ import 'package:buck_tracker/pages/ocr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_genius_scan/flutter_genius_scan.dart';
+import 'dart:io';
 
 // import 'package:open_file/open_file.dart';
 // import 'package:native_pdf_renderer/native_pdf_renderer.dart';
@@ -37,13 +38,14 @@ class MyScaffoldBody extends StatelessWidget {
           // String pdfUrl = result['pdfUrl'];
           print('Ajay');
           print(result['scans'][0]['enhancedUrl']);
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => OCR(
-                  img: result['scans'][0]['enhancedUrl'].replaceAll("file://", ''),
-                ),
-              ));
+          scanImage(File(result['scans'][0]['enhancedUrl'].replaceAll("file://", '')));
+          // Navigator.push(
+          //     context,
+          //     MaterialPageRoute(
+          //       builder: (context) => OCR(
+          //         img: result['scans'][0]['enhancedUrl'].replaceAll("file://", ''),
+          //       ),
+          //     ));
 
           // pdfUrl.replaceAll("file://", '');
           // try {

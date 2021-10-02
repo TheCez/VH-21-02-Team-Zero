@@ -45,7 +45,10 @@ class MyScaffoldBody extends StatelessWidget {
               result['scans'][0]['enhancedUrl'].replaceAll("file://", '')));
           print(ans);
           final jsdata = await fetchData(ans);
-          print(jsonDecode(jsdata)['total']);
+          // print(jsonDecode(jsdata)['total']);
+          var data = jsonDecode(jsdata);
+          uploadData(data);
+          monthlyAnalysis();
           // Navigator.push(
           //     context,
           //     MaterialPageRoute(

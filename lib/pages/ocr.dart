@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_ml_vision/google_ml_vision.dart';
@@ -22,6 +23,52 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart';
+
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+Future<String> fetchData(String file_url) async {
+  // final response = await http.get(
+  //   Uri.parse('https://api.veryfi.com/api/v7/partner/documents/'),
+  //   // Send authorization headers to the backend.
+  //   headers: {
+  //     // HttpHeaders.authorizationHeader: 'Basic your_api_token_here',
+  //     // HttpHeaders.clie
+  //     "Content-Type": "application/json",
+  //     "Accept": "application/json",
+  //     "CLIENT-ID": 'vrf0CTYwLUThSGf3gdwR82ediDePN5ieWc3PL2f',
+  //     "AUTHORIZATION": "apikey jmane7738:66cb382e7f017dda471cc36deae7cf2f"
+  //   },
+  // );
+
+  List<String> categories = [
+    "Office Expense",
+    "Meals & Entertainment",
+    "Utilities",
+    "Auto"
+  ];
+  // String ext = '.jpeg';
+  // String image_path = '3' + ext;
+  String file_name =basename(file_url.replaceAll('https://', ''));
+  Map payload = new Map<String, dynamic>();
+  payload = {
+    "file_name": file_name,
+    'file_url': file_url,
+    'categories': categories
+  };
+  HttpClient httpClient = new HttpClient();
+  HttpClientRequest request = await httpClient.postUrl(Uri.parse('https://api.veryfi.com/api/v7/partner/documents/'));
+  request.headers.set('content-type', 'application/json');
+  request.headers.set('Accept', 'application/json');
+  request.headers.set('CLIENT-ID', 'vrf0CTYwLUThSGf3gdwR82ediDePN5ieWc3PL2f');
+  request.headers.set('AUTHORIZATION', 'apikey jmane7738:66cb382e7f017dda471cc36deae7cf2f');
+  request.add(utf8.encode(json.encode(payload)));
+  HttpClientResponse response = await request.close();
+  // todo - you should check the response.statusCode
+  String reply = await response.transform(utf8.decoder).join();
+  httpClient.close();
+  return reply;
+}
+
 // firebase_storage.FirebaseStorage storage =
 //   firebase_storage.FirebaseStorage.instance;
 // firebase_storage.Reference ref =

@@ -18,6 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+import 'package:buck_tracker/pages/dashboard.dart';
 import 'package:buck_tracker/pages/login_page.dart';
 import 'package:buck_tracker/pages/scanner.dart';
 import 'package:buck_tracker/pages/sign_in.dart';
@@ -103,7 +104,13 @@ class FirstScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => Scanner()),
                 );
-              }, child: Text("Scan the bill"))
+              }, child: Text("Scan the bill")),
+              ElevatedButton(onPressed: () {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Dashboard()),
+                );
+              }, child: Text("Dashboard")),
             ],
           ),
         ),

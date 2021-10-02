@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_genius_scan/flutter_genius_scan.dart';
 import 'dart:io';
+import 'dart:convert';
 
 // import 'package:open_file/open_file.dart';
 // import 'package:native_pdf_renderer/native_pdf_renderer.dart';
@@ -40,8 +41,11 @@ class MyScaffoldBody extends StatelessWidget {
           print(File(result['scans'][0]['enhancedUrl']));
           //scanImage(File(result['scans'][0]['enhancedUrl'].replaceAll("file://", '')));
           //uploadImageToFirebase(result['scans'][0]['enhancedUrl'].replaceAll("file://", ''));
-          final ans = await uploadFile(File(result['scans'][0]['enhancedUrl'].replaceAll("file://", '')));
-          print(ans.toString()+" abhishek ");
+          final ans = await uploadFile(File(
+              result['scans'][0]['enhancedUrl'].replaceAll("file://", '')));
+          print(ans);
+          final jsdata = await fetchData(ans);
+          print(jsonDecode(jsdata)['total']);
           // Navigator.push(
           //     context,
           //     MaterialPageRoute(
